@@ -7,7 +7,8 @@ export class WeatherProvider {
   apiKey = '99dfe35fcb7de1ee';
   url;
 
-  constructor(public http: Http) {
+  constructor(
+    public http: Http) {
     console.log('Hello WeatherProvider Provider');
     this.url = 'http://api.wunderground.com/api/'+this.apiKey+'/conditions/q';
   }
@@ -17,4 +18,10 @@ export class WeatherProvider {
       .map(res => res.json());
   }
 
+  search(query: string) {
+    let searchUrl = "http://autocomplete.wunderground.com/aq?query=";
+    // let headers = new Headers()
+    return this.http.get(searchUrl+query)
+      .map(res => res.json());
+  }
 }
