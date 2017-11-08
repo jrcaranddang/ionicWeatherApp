@@ -19,7 +19,7 @@
       <ion-col width-100>
         <ion-searchbar (ionInput)=searchWeather($event) debounce=400></ion-searchbar>
         <ion-list *ngIf="items">
-          <button ion-item *ngFor="let item of items; let i = index" (click)="selectWeather()">
+          <button ion-item *ngFor="let item of (items | async); let i = index" (click)="selectWeather()">
             {{item}}
           </button>
         </ion-list>

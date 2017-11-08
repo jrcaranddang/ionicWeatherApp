@@ -14,12 +14,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'favorites.html',
 })
 export class FavoritesPage {
+  cities: any[] = [
+    "San Diego",
+    "San Francisco",
+    "Las Vegas",
+    "Honolulu"
+  ]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FavoritesPage');
+  }
+
+  citySelected(city) {
+    console.log(`selected: ${city}`);
   }
 
 }

@@ -14,5 +14,9 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <button ion-item *ngFor="let city of cities" (click)="citySelected(city)">
+      {{ city }}
+    </button>  
+  </ion-list>
 </ion-content>

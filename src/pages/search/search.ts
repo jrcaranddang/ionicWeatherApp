@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WeatherProvider } from '../../providers/weather/weather';
 import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs/Observable';
+
 
 /**
  * Generated class for the SearchPage page.
@@ -16,7 +18,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  items: any[];
+  items: Observable<any>;
 
   constructor(
     public navCtrl: NavController, 
@@ -34,13 +36,12 @@ export class SearchPage {
     
     console.log(val);
 
-    this.weatherProvider.search(val)
-      .subscribe(cities => {
-        this.items = cities;
-        console.log(this.items);
-      }, error => {
-        console.log(error);
-      });
+    this.items = this.weatherProvider.search(val);
+      // .subscribe(cities => {
+      //   console.log(cities);
+      // }, error => {
+      //   console.log(error);
+      // });
   }
 
   selectWeather() {
