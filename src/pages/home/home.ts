@@ -35,8 +35,8 @@ export class HomePage {
           // this.weatherProvider.geoLookupCoords(this.lat, this.lon)
             .subscribe(weather => {
               console.log(weather);
-              this.weather = weather;
-              // this.weather = weather.current_observation;
+              // this.weather = weather;
+              this.weather = weather.current_observation;
             });
         }
       });
