@@ -49,7 +49,7 @@ export class SearchPage {
 
   favorite(city) {
     console.log("favorite");
-    this.favorites.push(city);
+    this.favorites.push(city.display_location.full);
     this.storage.set("favorites", this.favorites);
     console.log(this.favorites);
   }
@@ -60,7 +60,6 @@ export class SearchPage {
     this.weatherProvider.getWeatherCoords(city.lat, city.lon)
       .subscribe(weather => {
         this.viewWeather = weather.current_observation;
-        console.log(weather.current_observation);
         this.cities = [];
         console.log(this.viewWeather);
       });

@@ -12,7 +12,7 @@ export class HomePage {
   weather:any;
   location:any;
   lat: any;
-  long: any;
+  lon: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -29,7 +29,6 @@ export class HomePage {
         this.lat = resp.coords.latitude;
         this.lon = resp.coords.longitude;
         
-        
         // get location by coordinates
         if(this.lat && this.lon) {
           this.weatherProvider.getWeatherCoords(this.lat, this.lon)
@@ -40,6 +39,7 @@ export class HomePage {
               this.weather = weather.current_observation;
             });
         }
+        
         
       })
       .catch((error) => {
@@ -75,6 +75,16 @@ export class HomePage {
       //     console.log(weather.current_observation);
       //   });
     // }
+        // get location by coordinates
+        if(this.lat && this.lon) {
+          this.weatherProvider.getWeatherCoords(this.lat, this.lon)
+          // this.weatherProvider.geoLookupCoords(this.lat, this.lon)
+            .subscribe(weather => {
+              console.log(weather);
+              // this.location = weather.location;
+              this.weather = weather.current_observation;
+            });
+        }
   }
 
   ionViewDidLoad() {

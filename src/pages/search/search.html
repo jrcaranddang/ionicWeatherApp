@@ -53,6 +53,11 @@
           <ion-item>
             <strong>Heat Index: </strong> {{viewWeather.heat_index_string}}
           </ion-item>
+          <ion-item>
+            <button ion-button icon-only (click)="favorite(this.viewWeather)">
+              <ion-icon name="star"></ion-icon>
+            </button>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>

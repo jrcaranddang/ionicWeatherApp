@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the FavoritesPage page.
@@ -21,13 +22,29 @@ export class FavoritesPage {
     "Honolulu"
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public storage: Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FavoritesPage');
+    // this.storage.get('favorites')
+    //   .then((val) => {
+    //   this.cities = val;
+    //   console.log('Viewing city: ', val);
+    // });
   }
 
+  ionViewWillEnter(){
+    this.storage.get('favorites')
+      .then((val) => {
+      this.cities = val;
+      console.log('Viewing city: ', val);
+    });
+  }
+    
   citySelected(city) {
     console.log(`selected: ${city}`);
   }
