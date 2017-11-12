@@ -63,15 +63,15 @@ export class HomePage {
       //   });
     // }
         // get location by coordinates
-        if(this.lat && this.lon) {
-          this.weatherProvider.getWeatherCoords(this.lat, this.lon)
-          // this.weatherProvider.geoLookupCoords(this.lat, this.lon)
-            .subscribe(weather => {
-              console.log(weather);
-              // this.location = weather.location;
-              this.weather = weather.current_observation;
-            });
-        }
+        // if(this.lat && this.lon) {
+        //   this.weatherProvider.getWeatherCoords(this.lat, this.lon)
+        //   // this.weatherProvider.geoLookupCoords(this.lat, this.lon)
+        //     .subscribe(weather => {
+        //       console.log(weather);
+        //       // this.location = weather.location;
+        //       this.weather = weather.current_observation;
+        //     });
+        // }
   }
 
   ionViewDidLoad() {
