@@ -18,7 +18,9 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  items: Observable<any>;
+  cities: Observable<any>;
+  favorites: any[] = [];
+  viewWeather: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -36,15 +38,33 @@ export class SearchPage {
     
     console.log(val);
 
-    this.items = this.weatherProvider.search(val);
-      // .subscribe(cities => {
-      //   console.log(cities);
-      // }, error => {
-      //   console.log(error);
-      // });
+    this.weatherProvider.search(val)
+      .subscribe(cities => {
+        this.cities = cities['RESULTS'];
+        console.log(cities['RESULTS']);
+      }, error => {
+        console.log(error);
+      });
   }
 
-  selectWeather() {
-    console.log("show me the weather!");
+  favorite(city) {
+    console.log("favorite");
+    this.favorites.push(city);
+    this.storage.set("favorites", this.favorites);
+    console.log(this.favorites);
   }
+  
+  selectWeather(city) {
+    console.log("show me the weather!");
+    
+    this.weatherProvider.getWeatherCoords(city.lat, city.lon)
+      .subscribe(weather => {
+        this.viewWeather = weather.current_observation;
+        console.log(weather.current_observation);
+        this.cities = [];
+        console.log(this.viewWeather);
+      });
+    // this.viewWeather = city;
+  }
+  
 }

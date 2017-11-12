@@ -18,10 +18,41 @@
     <ion-row>
       <ion-col width-100>
         <ion-searchbar (ionInput)=searchWeather($event) debounce=400></ion-searchbar>
-        <ion-list *ngIf="items">
-          <button ion-item *ngFor="let item of (items | async); let i = index" (click)="selectWeather()">
-            {{item}}
+        <ion-list *ngIf="cities">
+          <button ion-item *ngFor="let city of cities; let i = index" (click)="selectWeather(city)">
+            {{ city.name }}
           </button>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="this.viewWeather">
+    <ion-row>
+      <ion-col width-50 offset-25>
+        <h2 class="location">{{viewWeather.display_location.full}}</h2>
+        <div class="icon"><img src="{{viewWeather.icon_url}}" alt=""></div>
+        <h3 class="desc">{{viewWeather.viewWeather}}</h3>
+        <h1 class="temp">{{viewWeather.temp_f}}&deg;</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
+          <ion-item>
+            <strong>Temp: </strong> {{viewWeather.temperature_string}}
+          </ion-item>
+          <ion-item>
+            <strong>Relative Humidity: </strong> {{viewWeather.relative_humidity}}
+          </ion-item>
+          <ion-item>
+            <strong>Dewpoint: </strong> {{viewWeather.dewpoint_string}}
+          </ion-item>
+          <ion-item>
+            <strong>Visibility: </strong> {{viewWeather.visibility_mi}}
+          </ion-item>
+          <ion-item>
+            <strong>Heat Index: </strong> {{viewWeather.heat_index_string}}
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
