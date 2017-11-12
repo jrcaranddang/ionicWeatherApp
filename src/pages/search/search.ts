@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WeatherProvider } from '../../providers/weather/weather';
 import { Storage } from '@ionic/storage';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
 
 
 /**
@@ -18,7 +18,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  cities: Observable<any>;
+  cities: any;
   favorites: any[] = [];
   viewWeather: any;
 
@@ -48,8 +48,8 @@ export class SearchPage {
   }
 
   favorite(city) {
-    console.log("favorite");
-    this.favorites.push(city.display_location.full);
+    console.log("Saved to favorites");
+    this.favorites.push(city);
     this.storage.set("favorites", this.favorites);
     console.log(this.favorites);
   }
@@ -62,8 +62,10 @@ export class SearchPage {
         this.viewWeather = weather.current_observation;
         this.cities = [];
         console.log(this.viewWeather);
+      },
+      error => {
+        console.log(error);
       });
-    // this.viewWeather = city;
   }
   
 }

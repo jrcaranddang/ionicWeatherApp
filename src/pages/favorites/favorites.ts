@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { WeatherProvider } from '../../providers/weather/weather';
 import { Storage } from '@ionic/storage';
 
 /**
@@ -15,26 +16,23 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'favorites.html',
 })
 export class FavoritesPage {
-  cities: any[] = [
-    "San Diego",
-    "San Francisco",
-    "Las Vegas",
-    "Honolulu"
-  ]
-
+  cities: any[] = [];
+  viewWeather: any;
+  
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public weatherProvider: WeatherProvider,
     public storage: Storage) {
+      this.storage.get('favorites')
+        .then((val) => {
+        this.cities = val;
+        console.log('Viewing city: ', val);
+      });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FavoritesPage');
-    // this.storage.get('favorites')
-    //   .then((val) => {
-    //   this.cities = val;
-    //   console.log('Viewing city: ', val);
-    // });
   }
 
   ionViewWillEnter(){
@@ -46,7 +44,18 @@ export class FavoritesPage {
   }
     
   citySelected(city) {
-    console.log(`selected: ${city}`);
+    console.log(`selected: ${city.display_location.full}`);
+    // this.weatherProvider.getWeatherCoords(city.lat, city.lon)
+    //   .subscribe(weather => {
+    //     this.viewWeather = weather.current_observation;
+    //     this.cities = [];
+    //     console.log(this.viewWeather);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   });
+    
+    this.viewWeather = city;
   }
 
 }
