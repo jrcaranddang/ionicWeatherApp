@@ -35,24 +35,11 @@ export class HomePage {
           // this.weatherProvider.geoLookupCoords(this.lat, this.lon)
             .subscribe(weather => {
               console.log(weather);
-              // this.location = weather.location;
-              this.weather = weather.current_observation;
+              this.weather = weather;
+              // this.weather = weather.current_observation;
             });
         }
-        
-        
-      })
-      .catch((error) => {
-        console.log('Error getting location', error);
       });
-    
-    let watch = this.geolocation.watchPosition();
-    
-    watch.subscribe((data) => {
-     // data can be a set of coordinates, or an error (if an error occurred).
-     // data.coords.latitude
-     // data.coords.longitude
-    });
   }
 
   ionViewWillEnter(){
