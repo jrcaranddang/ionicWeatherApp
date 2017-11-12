@@ -16,35 +16,35 @@
 <ion-content padding>
   <ion-list *ngIf="this.cities">
     <button ion-item *ngFor="let city of cities" (click)="citySelected(city)">
-      {{ city.display_location.full }}
+      {{ city.current_observation.display_location.full }}
     </button>  
   </ion-list>
   <ion-grid *ngIf="this.viewWeather">
     <ion-row>
       <ion-col width-50 offset-25>
-        <h2 class="location">{{viewWeather.display_location.full}}</h2>
-        <div class="icon"><img src="{{viewWeather.icon_url}}" alt=""></div>
-        <h3 class="desc">{{viewWeather.weather}}</h3>
-        <h1 class="temp">{{viewWeather.temp_f}}&deg;</h1>
+        <h2 class="location">{{viewWeather.current_observation.display_location.full}}</h2>
+        <div class="icon"><img src="{{viewWeather.current_observation.icon_url}}" alt=""></div>
+        <h3 class="desc">{{viewWeather.current_observation.weather}}</h3>
+        <h1 class="temp">{{viewWeather.current_observation.temp_f}}&deg;</h1>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col width-100>
         <ion-list>
           <ion-item>
-            <strong>Temp: </strong> {{viewWeather.temperature_string}}
+            <strong>Temp: </strong> {{viewWeather.current_observation.temperature_string}}
           </ion-item>
           <ion-item>
-            <strong>Relative Humidity: </strong> {{viewWeather.relative_humidity}}
+            <strong>Relative Humidity: </strong> {{viewWeather.current_observation.relative_humidity}}
           </ion-item>
           <ion-item>
-            <strong>Dewpoint: </strong> {{viewWeather.dewpoint_string}}
+            <strong>Dewpoint: </strong> {{viewWeather.current_observation.dewpoint_string}}
           </ion-item>
           <ion-item>
-            <strong>Visibility: </strong> {{viewWeather.visibility_mi}}
+            <strong>Visibility: </strong> {{viewWeather.current_observation.visibility_mi}}
           </ion-item>
           <ion-item>
-            <strong>Heat Index: </strong> {{viewWeather.heat_index_string}}
+            <strong>Heat Index: </strong> {{viewWeather.current_observation.heat_index_string}}
           </ion-item>
           <ion-item>
             <button ion-button icon-only item-end (click)="favorite(this.viewWeather)">

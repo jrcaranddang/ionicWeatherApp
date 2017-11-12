@@ -24,11 +24,11 @@ export class FavoritesPage {
     public navParams: NavParams,
     public weatherProvider: WeatherProvider,
     public storage: Storage) {
-      this.storage.get('favorites')
-        .then((val) => {
-        this.cities = val;
-        console.log('Viewing city: ', val);
-      });
+      // this.storage.get('favorites')
+      //   .then((val) => {
+      //   this.cities = val;
+      //   console.log('Viewing city: ', val);
+      // });
   }
 
   ionViewDidLoad() {
@@ -44,7 +44,7 @@ export class FavoritesPage {
   }
     
   citySelected(city) {
-    console.log(`selected: ${city.display_location.full}`);
+    console.log(`selected: ${city.current_observation.display_location.full}`);
     // this.weatherProvider.getWeatherCoords(city.lat, city.lon)
     //   .subscribe(weather => {
     //     this.viewWeather = weather.current_observation;
