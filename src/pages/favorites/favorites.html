@@ -24,7 +24,7 @@
       <ion-col width-50 offset-25>
         <h2 class="location">{{viewWeather.display_location.full}}</h2>
         <div class="icon"><img src="{{viewWeather.icon_url}}" alt=""></div>
-        <h3 class="desc">{{viewWeather.viewWeather}}</h3>
+        <h3 class="desc">{{viewWeather.weather}}</h3>
         <h1 class="temp">{{viewWeather.temp_f}}&deg;</h1>
       </ion-col>
     </ion-row>
@@ -46,11 +46,11 @@
           <ion-item>
             <strong>Heat Index: </strong> {{viewWeather.heat_index_string}}
           </ion-item>
-          <!--<ion-item>-->
-          <!--  <button ion-button icon-only item-end (click)="favorite(this.viewWeather)">-->
-          <!--    <ion-icon name="star"></ion-icon>-->
-          <!--  </button>-->
-          <!--</ion-item>-->
+          <ion-item>
+            <button ion-button icon-only item-end (click)="favorite(this.viewWeather)">
+              <ion-icon name="star"></ion-icon>
+            </button>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>

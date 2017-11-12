@@ -59,7 +59,8 @@ export class SearchPage {
     
     this.weatherProvider.getWeatherCoords(city.lat, city.lon)
       .subscribe(weather => {
-        this.viewWeather = weather.current_observation;
+        this.viewWeather = weather;
+        // this.viewWeather = weather.current_observation;
         this.cities = [];
         console.log(this.viewWeather);
       },
