@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { WeatherProvider } from '../../providers/weather/weather';
 // import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
+import { WeatherCardComponent } from '../../components/weather-card/weather-card';
 
 @Component({
   selector: 'page-home',

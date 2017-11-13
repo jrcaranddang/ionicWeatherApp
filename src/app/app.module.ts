@@ -13,6 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { SearchPage } from '../pages/search/search';
 import { FavoritesPage } from '../pages/favorites/favorites';
+import { WeatherCardComponent } from '../components/weather-card/weather-card';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +30,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     TabsPage,
     SettingsPage,
     SearchPage,
-    FavoritesPage
+    FavoritesPage,
+    WeatherCardComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     TabsPage,
     SettingsPage,
     SearchPage,
-    FavoritesPage
+    FavoritesPage,
+    WeatherCardComponent
   ],
   providers: [
     StatusBar,

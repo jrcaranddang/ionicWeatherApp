@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the WeatherCardComponent component.
@@ -11,12 +11,10 @@ import { Component } from '@angular/core';
   templateUrl: 'weather-card.html'
 })
 export class WeatherCardComponent {
-
-  text: string;
+  @Input() weather: any;
 
   constructor() {
     console.log('Hello WeatherCardComponent Component');
-    this.text = 'Hello World';
   }
 
 }

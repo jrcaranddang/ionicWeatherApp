@@ -26,40 +26,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid *ngIf="this.viewWeather">
-    <ion-row>
-      <ion-col width-50 offset-25>
-        <h2 class="location">{{viewWeather.current_observation.display_location.full}}</h2>
-        <div class="icon"><img src="{{viewWeather.current_observation.icon_url}}" alt=""></div>
-        <h3 class="desc">{{viewWeather.current_observation.weather}}</h3>
-        <h1 class="temp">{{viewWeather.current_observation.temp_f}}&deg;</h1>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col width-100>
-        <ion-list>
-          <ion-item>
-            <strong>Temp: </strong> {{viewWeather.current_observation.temperature_string}}
-          </ion-item>
-          <ion-item>
-            <strong>Relative Humidity: </strong> {{viewWeather.current_observation.relative_humidity}}
-          </ion-item>
-          <ion-item>
-            <strong>Dewpoint: </strong> {{viewWeather.current_observation.dewpoint_string}}
-          </ion-item>
-          <ion-item>
-            <strong>Visibility: </strong> {{viewWeather.current_observation.visibility_mi}}
-          </ion-item>
-          <ion-item>
-            <strong>Heat Index: </strong> {{viewWeather.current_observation.heat_index_string}}
-          </ion-item>
-          <ion-item>
-            <button ion-button icon-only item-end (click)="favorite(this.viewWeather)">
-              <ion-icon name="star"></ion-icon>
-            </button>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <weather-card [weather]="this.viewWeather"></weather-card>
 </ion-content>
