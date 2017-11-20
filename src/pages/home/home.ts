@@ -9,7 +9,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 })
 export class HomePage {
   weather: any;
-  location: any;
   lat: any;
   lon: any;
 
@@ -27,13 +26,16 @@ export class HomePage {
         
         // get location weather by coordinates
         if(this.lat && this.lon) {
-          this.weatherProvider.getWeatherCoords(this.lat, this.lon)
-            .subscribe(weather => {
-              console.log(weather);
-              this.weather = weather;
-              // this.weather = weather.current_observation;
-            });
+          this.weather = this.weatherProvider.getWeatherCoords(this.lat, this.lon)
+          // this.weatherProvider.getWeatherCoords(this.lat, this.lon)
+          //   .subscribe(weather => {
+          //     console.log(weather);
+          //     this.weather = weather;
+          //   });
         }
+      })
+      .catch((error) => {
+        console.log('Error getting location', error);
       });
   }
 

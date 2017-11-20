@@ -26,5 +26,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <weather-card [weather]="this.viewWeather"></weather-card>
+  <weather-card [weather]="this.viewWeather | async"></weather-card>
 </ion-content>

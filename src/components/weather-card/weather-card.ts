@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { WeatherProvider } from '../../providers/weather/weather';
 
 /**
  * Generated class for the WeatherCardComponent component.
@@ -13,18 +13,15 @@ import { Storage } from '@ionic/storage';
 })
 export class WeatherCardComponent {
   @Input() weather: any;
-  favorites: any[] = [];
 
   constructor(
-    private storage: Storage) {
+    public weatherProvider: WeatherProvider) {
     console.log('Hello WeatherCardComponent Component');
   }
 
   favorite(city) {
+    this.weatherProvider.favorite(city)
     console.log("Saved to favorites");
-    this.favorites.push(city);
-    this.storage.set("favorites", this.favorites);
-    console.log(this.favorites);
   }
   
 }

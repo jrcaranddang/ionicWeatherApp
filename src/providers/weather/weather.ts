@@ -3,16 +3,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Platform } from 'ionic-angular';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
 
 
 @Injectable()
 export class WeatherProvider {
   apiKey = '99dfe35fcb7de1ee';
   desktop: Boolean = false;
+  favorites: any[] = [];
 
   constructor(
     public http: HttpClient,
-    public plt: Platform) {
+    public plt: Platform,
+    private storage: Storage) {
     // public http: HttpClientModule) {
     console.log('Hello WeatherProvider Provider');
     if (this.plt.is('core')) {
@@ -42,5 +45,11 @@ export class WeatherProvider {
     // http://api.wunderground.com/api/c56568eedbc03ac8/conditions/q/37.776289,-122.395234.json
     let geoUrl = /api/+this.apiKey+'/geolookup/q/';
     return this.desktop ? this.http.get(geoUrl+lat+','+lon+'.json') : this.http.get('https://api.wunderground.com/api/'+this.apiKey+'/geolookup/q/'+lat+','+lon+'.json');
+  }
+  
+  favorite(city) {
+    this.favorites.push(city);
+    this.storage.set("favorites", this.favorites);
+    console.log("Favorite list: ", this.favorites);
   }
 }

@@ -35,6 +35,11 @@ export class SearchPage {
     
     console.log(val);
 
+    // with async pipe
+    // this.cities = this.weatherProvider.search(val).map(cities => {
+    //     return cities.RESULTS
+    //   });
+      
     this.weatherProvider.search(val)
       .subscribe(cities => {
         this.cities = cities['RESULTS'];
@@ -47,16 +52,17 @@ export class SearchPage {
   selectWeather(city) {
     console.log("show me the weather!");
     
-    this.weatherProvider.getWeatherCoords(city.lat, city.lon)
-      .subscribe(weather => {
-        this.viewWeather = weather;
-        // this.viewWeather = weather.current_observation;
+    this.viewWeather = this.weatherProvider.getWeatherCoords(city.lat, city.lon)
+    // this.weatherProvider.getWeatherCoords(city.lat, city.lon)
+    //   .subscribe(weather => {
+    //     this.viewWeather = weather;
+    //     // this.viewWeather = weather.current_observation;
         this.cities = [];
-        console.log(this.viewWeather);
-      },
-      error => {
-        console.log(error);
-      });
+    //     console.log(this.viewWeather);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   });
   }
   
 }
