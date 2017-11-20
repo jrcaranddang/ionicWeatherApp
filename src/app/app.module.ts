@@ -21,8 +21,7 @@ import { WeatherProvider } from '../providers/weather/weather';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
-@NgModule({
-  declarations: [
+const injections: any[] = [
     MyApp,
     AboutPage,
     ContactPage,
@@ -32,6 +31,11 @@ import { Geolocation } from '@ionic-native/geolocation';
     SearchPage,
     FavoritesPage,
     WeatherCardComponent
+  ];
+
+@NgModule({
+  declarations: [
+    injections
   ],
   imports: [
     BrowserModule,
@@ -42,15 +46,7 @@ import { Geolocation } from '@ionic-native/geolocation';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    SettingsPage,
-    SearchPage,
-    FavoritesPage,
-    WeatherCardComponent
+    injections
   ],
   providers: [
     StatusBar,

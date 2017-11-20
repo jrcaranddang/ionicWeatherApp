@@ -1,39 +1,33 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { WeatherProvider } from '../../providers/weather/weather';
-// import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
-import { WeatherCardComponent } from '../../components/weather-card/weather-card';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  weather:any;
-  location:any;
+  weather: any;
+  location: any;
   lat: any;
   lon: any;
 
   constructor(
     public navCtrl: NavController, 
     private weatherProvider:WeatherProvider,
-    // private storage:Storage,
     private geolocation: Geolocation) {
 
     // get coordinates
     this.geolocation.getCurrentPosition()
       .then((resp) => {
-        // resp.coords.latitude
-        // resp.coords.longitude
         console.log(resp.coords);
         this.lat = resp.coords.latitude;
         this.lon = resp.coords.longitude;
         
-        // get location by coordinates
+        // get location weather by coordinates
         if(this.lat && this.lon) {
           this.weatherProvider.getWeatherCoords(this.lat, this.lon)
-          // this.weatherProvider.geoLookupCoords(this.lat, this.lon)
             .subscribe(weather => {
               console.log(weather);
               this.weather = weather;
@@ -44,35 +38,6 @@ export class HomePage {
   }
 
   ionViewWillEnter(){
-    
-    // this.storage.get('location').then((val) => {
-    //   if(val != null){
-    //     this.location = JSON.parse(val);
-    //   } else {
-    //     this.location = {
-    //       city: 'Miami',
-    //       state: 'FL'
-    //     }
-    //   }
-
-        
-    // if(this.location) {
-      // this.weatherProvider.getWeather(this.location.city, this.location.state)  
-      //   .subscribe(weather => {
-      //     this.weather = weather.current_observation;
-      //     console.log(weather.current_observation);
-      //   });
-    // }
-        // get location by coordinates
-        // if(this.lat && this.lon) {
-        //   this.weatherProvider.getWeatherCoords(this.lat, this.lon)
-        //   // this.weatherProvider.geoLookupCoords(this.lat, this.lon)
-        //     .subscribe(weather => {
-        //       console.log(weather);
-        //       // this.location = weather.location;
-        //       this.weather = weather.current_observation;
-        //     });
-        // }
   }
 
   ionViewDidLoad() {

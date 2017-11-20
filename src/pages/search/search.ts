@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WeatherProvider } from '../../providers/weather/weather';
-import { Storage } from '@ionic/storage';
-// import { Observable } from 'rxjs/Observable';
 
 
 /**
@@ -25,8 +23,7 @@ export class SearchPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    private weatherProvider:WeatherProvider,
-    private storage:Storage) {
+    private weatherProvider: WeatherProvider) {
   }
 
   ionViewDidLoad() {
@@ -45,13 +42,6 @@ export class SearchPage {
       }, error => {
         console.log(error);
       });
-  }
-
-  favorite(city) {
-    console.log("Saved to favorites");
-    this.favorites.push(city);
-    this.storage.set("favorites", this.favorites);
-    console.log(this.favorites);
   }
   
   selectWeather(city) {

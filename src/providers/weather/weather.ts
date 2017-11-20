@@ -34,12 +34,13 @@ export class WeatherProvider {
 
   search(query: string) {
     let searchUrl = "/search/aq?query=";
-    return this.desktop ? this.http.get(searchUrl+query) : this.http.get('http://autocomplete.wunderground.com/aq?query='+query);
+    return this.http.get(searchUrl+query);
+    // return this.desktop ? this.http.get(searchUrl+query) : this.http.get('https://autocomplete.wunderground.com/aq?query='+query);
   }
   
   geoLookupCoords(lat, lon) {
     // http://api.wunderground.com/api/c56568eedbc03ac8/conditions/q/37.776289,-122.395234.json
     let geoUrl = /api/+this.apiKey+'/geolookup/q/';
-    return this.desktop ? this.http.get(geoUrl+lat+','+lon+'.json') : this.http.get('http://api.wunderground.com/api/'+this.apiKey+'/geolookup/q/'+lat+','+lon+'.json');
+    return this.desktop ? this.http.get(geoUrl+lat+','+lon+'.json') : this.http.get('https://api.wunderground.com/api/'+this.apiKey+'/geolookup/q/'+lat+','+lon+'.json');
   }
 }

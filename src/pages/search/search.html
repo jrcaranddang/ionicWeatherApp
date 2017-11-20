@@ -19,7 +19,7 @@
       <ion-col width-100>
         <ion-searchbar (ionInput)=searchWeather($event) debounce=400></ion-searchbar>
         <ion-list *ngIf="cities">
-          <button ion-item *ngFor="let city of cities; let i = index" (click)="selectWeather(city)">
+          <button ion-item *ngFor="let city of cities" (click)="selectWeather(city)">
             {{ city.name }}
           </button>
         </ion-list>
